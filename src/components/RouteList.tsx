@@ -18,7 +18,7 @@ export function RouteList({
       <div style={{
         position: "absolute",
         top: "10px",
-        left: "10px",
+        left: "50px",
         zIndex: 1000,
         background: "white",
         padding: "15px",
@@ -49,7 +49,7 @@ export function RouteList({
     <div style={{
       position: "absolute",
       top: "10px",
-      left: "10px",
+      left: "50px",
       zIndex: 1000,
       background: "white",
       padding: "15px",

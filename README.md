@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# Interactive Transit Map Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive web application that visualizes public transportation networks (buses and trams) using real-time data from OpenStreetMap. Explore nearby transit stops and routes with an intuitive map interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Map**: Click anywhere on the map to explore public transport in that area
+- **Customizable Search Radius**: Adjust the search radius from 100m to 2000m
+- **Route Filtering**: Toggle individual routes on/off to focus on specific lines
+- **Real-time Data**: Fetches live transit data from OpenStreetMap via Overpass API
+- **Visual Differentiation**: Distinct icons for bus stops and tram stops
+- **Color-coded Routes**: Each route line is displayed in a unique color
+- **Detailed Information**: View stop names, route numbers, and location statistics
 
-## React Compiler
+## Technologies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19.2** with TypeScript for type-safe UI development
+- **Leaflet** and **React-Leaflet** for interactive mapping
+- **Vite** (Rolldown) for fast development and building
+- **OpenStreetMap** for map tiles
+- **Overpass API** for public transport data
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v18 or higher)
+- pnpm (v10 or higher)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Start development server
+pnpm dev
 ```
+
+The application will be available at `http://localhost:5173`
+
+### Build
+
+```bash
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+```
+
+## Usage
+
+1. Click anywhere on the map to select a location
+2. Adjust the radius slider to change the search area
+3. View the discovered stops and routes in the stats panel
+4. Use the route list to toggle specific routes on/off
+5. Click on markers and route lines for detailed information
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── TransportMap.tsx      # Main map component
+│   ├── ControlPanel.tsx      # Radius control and stats
+│   ├── RouteList.tsx          # Route filtering sidebar
+│   ├── MapClickHandler.tsx    # Map interaction handler
+│   └── MapIcons.tsx           # Custom map markers
+├── services/           # API services
+│   └── overpassApi.ts        # Overpass API integration
+├── types/              # TypeScript type definitions
+│   └── transport.ts          # Transport data types
+├── utils/              # Utility functions
+│   └── routeColors.ts        # Route color generation
+└── App.tsx             # Root component
+```
+
+## License
+
+MIT

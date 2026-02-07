@@ -1,7 +1,9 @@
 {
-  "name": "my-vue-app",
+  "name": "interactive-transit-map-explorer",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Interactive transit map explorer using real-time OpenStreetMap data",
+  "author": "SSZ",
   "type": "module",
   "scripts": {
     "dev": "vite",

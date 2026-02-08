@@ -65,9 +65,6 @@ export default function TransportMap() {
       setSelectedRoutes(new Set(Object.keys(routeWays)));
     } catch (error) {
       console.error("Failed to fetch transport data:", error);
-      const errorMessage = error instanceof Error 
-        ? error.message 
-        : "Failed to fetch transport data. Please try again.";
       alert(`Error: something went wrong, probably the server is busy. Try again later.`);
     } finally {
       setLoading(false);
